@@ -46,7 +46,7 @@ int main()
 {
     string expr;
     getline(cin, expr);
-    cout << expr;
+ 
 
     if (areBracketsBalanced(expr))
         cout << "Balanced";
