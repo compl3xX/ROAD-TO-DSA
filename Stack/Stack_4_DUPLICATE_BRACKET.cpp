@@ -18,7 +18,7 @@ bool findDuplicateparenthesis(string str)
             }
             if (elementinside < 1)
             {
-                return true;
+                return 1;
             }
         }
         else
@@ -30,8 +30,10 @@ bool findDuplicateparenthesis(string str)
 }
 int main()
 {
-    string str = "(((a+(b))+(c+d)))";
-    if (findDuplicateparenthesis)
+    string str;
+    cin>>str;
+     getline(cin, str);
+    if (findDuplicateparenthesis(str))
     {
         cout << "Duplicate is found";
     }
