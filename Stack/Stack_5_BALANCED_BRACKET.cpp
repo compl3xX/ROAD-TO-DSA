@@ -39,7 +39,7 @@ bool areBracketsBalanced(string str)
                 if (decision(st, '(') == 0)
                 {
 
-                    return decision(st, '{');
+                    return decision(st, '(');
                 }
             }
             else if (ch == '}')
@@ -57,7 +57,7 @@ bool areBracketsBalanced(string str)
                 if (decision(st, '[') == 0)
                 {
 
-                    return decision(st, '{');
+                    return decision(st, '[');
                 }
             }
         }
