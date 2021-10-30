@@ -1,56 +1,89 @@
 #include <bits/stdc++.h>
 using namespace std;
-bool areBracketsBalanced(string str)
+bool decision(stack<char> &st1, char ch1)
 {
-    stack<char> s;
-    char x;
-    for (int i = 0; i < str.length(); i++)
+
+    if (st1.size() == 0)
     {
 
-        if (str[i] == '(' || str[i] == '{' || str[i] == '[')
+        return false;
+    }
+    else if (st1.top() != ch1)
+    {
+
+        return false;
+    }
+    else
+    {
+
+        st1.pop();
+    }
+}
+bool areBracketsBalanced(string str)
+{
+    stack<char> st;
+    for (auto ch : str)
+    {
+        //cout << ch;
+        if (ch == '(' || ch == '{' || ch == '[')
         {
-            s.push(str[i]);
-            continue;
+
+            st.push(ch);
         }
-        if (s.empty())
-            return false;
-
-        switch (str[i])
+        else
         {
-        case ')':
 
-            x = s.top();
-            s.pop();
-            if (x == '{' || x == '[')
-                return false;
-            break;
+            if (ch == ')')
+            {
 
-        case '}':
-            x = s.top();
-            s.pop();
-            if (x == '(' || x == '[')
-                return false;
-            break;
-        case ']':
-            x = s.top();
-            s.pop();
-            if (x == '(' || x == '{')
-                return false;
-            break;
+                if (decision(st, '(') == 0)
+                {
+
+                    return decision(st, '{');
+                }
+            }
+            else if (ch == '}')
+            {
+
+                if (decision(st, '{') == 0)
+                {
+
+                    return decision(st, '{');
+                }
+            }
+            else if (ch == ']')
+            {
+
+                if (decision(st, '[') == 0)
+                {
+
+                    return decision(st, '{');
+                }
+            }
         }
     }
-    return (s.empty());
+
+    if (st.empty())
+    {
+
+        return true;
+    }
+    else
+    {
+
+        return false;
+    }
 }
+
 int main()
 
 {
     string expr;
     getline(cin, expr);
- 
 
-    if (areBracketsBalanced(expr))
-        cout << "Balanced";
+    if (areBracketsBalanced(expr) == 1)
+        cout << "true";
     else
-        cout << "Not Balanced";
+        cout << "false";
     return 0;
 }
