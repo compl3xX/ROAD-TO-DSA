@@ -1,24 +1,26 @@
 #include <bits/stdc++.h>
 using namespace std;
-bool findDuplicateparenthesis(string str)
+void findDuplicateparenthesis(string str)
 {
     stack<char> st;
-    for (auto ch : str)
+    for (int i = 0; i < str.size(); i++)
     {
+        char ch = str.at(i);
         if (ch == ')')
         {
-            char top = st.top();
-            st.pop();
-            int elementinside = 0;
-            while (top != '(')
+            if (st.top() == '(')
             {
-                elementinside++;
-                top = st.top();
-                st.pop();
+
+                cout << "true";
+                return;
             }
-            if (elementinside < 1)
+            else
             {
-                return 1;
+                while (st.top() != '(')
+                {
+                    st.pop();
+                }
+                st.pop();
             }
         }
         else
@@ -26,20 +28,12 @@ bool findDuplicateparenthesis(string str)
             st.push(ch);
         }
     }
-    return false;
+    cout << "false";
 }
 int main()
 {
     string str;
-    cin>>str;
-     getline(cin, str);
-    if (findDuplicateparenthesis(str))
-    {
-        cout << "Duplicate is found";
-    }
-    else
-    {
-        cout << "Duplicated is not found ";
-    }
+    getline(cin, str);
+    findDuplicateparenthesis(str);
     return 0;
 }
