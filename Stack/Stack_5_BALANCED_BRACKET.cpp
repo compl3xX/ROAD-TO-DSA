@@ -17,48 +17,51 @@ bool decision(stack<char> &st1, char ch1)
     {
 
         st1.pop();
+        return true;
     }
 }
-bool areBracketsBalanced(string str)
+void areBracketsBalanced(string str)
 {
     stack<char> st;
     for (auto ch : str)
     {
-        //cout << ch;
+
         if (ch == '(' || ch == '{' || ch == '[')
         {
 
             st.push(ch);
         }
-        else
+
+        else if (ch == ')')
         {
 
-            if (ch == ')')
+            bool val = decision(st, '(');
+            if (val == false)
             {
 
-                if (decision(st, '(') == 0)
-                {
-
-                    return decision(st, '(');
-                }
+                cout << "false";
+                return;
             }
-            else if (ch == '}')
+        }
+        else if (ch == '}')
+        {
+
+            bool val = decision(st, '{');
+            if (val == false)
             {
-
-                if (decision(st, '{') == 0)
-                {
-
-                    return decision(st, '{');
-                }
+                cout << "false";
+                return;
             }
-            else if (ch == ']')
+        }
+        else if (ch == ']')
+        {
+
+            bool val = decision(st, '[');
+            if (val == false)
             {
 
-                if (decision(st, '[') == 0)
-                {
-
-                    return decision(st, '[');
-                }
+                cout << "false";
+                return;
             }
         }
     }
@@ -66,12 +69,12 @@ bool areBracketsBalanced(string str)
     if (st.empty())
     {
 
-        return true;
+        cout << "true";
     }
     else
     {
 
-        return false;
+        cout << "false";
     }
 }
 
@@ -80,10 +83,7 @@ int main()
 {
     string expr;
     getline(cin, expr);
+    areBracketsBalanced(expr);
 
-    if (areBracketsBalanced(expr) == 1)
-        cout << "true";
-    else
-        cout << "false";
     return 0;
 }
