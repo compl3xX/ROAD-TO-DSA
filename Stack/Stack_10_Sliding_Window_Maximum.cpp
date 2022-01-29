@@ -37,7 +37,7 @@ void solve(vector<long long> arr, long long k)
         }
         while (nge[j] < i + k)
         {
-            j = nge[i];
+            j = nge[j];
         }
         cout << arr[j] << " ";
     }
