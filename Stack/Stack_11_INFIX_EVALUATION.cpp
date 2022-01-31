@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 
 using namespace std;
+//Doing the operation 
 int operation(int v1, int v2, char optr)
 {
     if (optr == '+')
@@ -20,20 +21,13 @@ int operation(int v1, int v2, char optr)
         return v1 / v2;
     }
 }
+//Doing the precedence of operator
 int precedence(char optr)
 {
     if (optr == '+' || optr == '-')
     {
         return 1;
     }
-    // else if (optr == '-')
-    // {
-    //     return 1;
-    // }
-    // else if (optr == '*')
-    // {
-    //     return 2;
-    // }
     else
     {
         return 2;
@@ -87,7 +81,7 @@ void solve(string str)
             opertr.pop();
         }
     }
-
+// if some operands are left in stack
     while (opertr.size() > 0)
     {
         char optr = opertr.top();
