@@ -23,16 +23,9 @@ void solve(vector<vector<int>> ipt)
         }
     }
     int poc = st.top();
-    cout << poc << endl;
-    st.pop();
-    for (int i = 0; i < ipt.size(); i++)
-    {
-        for (int j = 0; j < ipt.size(); j++)
-        {
-            cout << ipt[i][j];
-        }
-    }
 
+    st.pop();
+    
     for (int i = 0; i < ipt.size(); i++)
     {
         if (i != poc)
